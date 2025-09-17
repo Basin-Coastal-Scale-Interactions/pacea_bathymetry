@@ -29,6 +29,8 @@ bathy<-terra::rast(here("data",
                         "bathymetry", 
                         "gebco_2023_n58.0_s42.0_w-146.0_e-117.0.nc"))
 
+bathy<-terra::rast("C:\\Users\\FlynnK\\Documents\\GIS_base_files\\environmental_data\\bathymetry_nc\\gebco_2022_n56.0_s46.0_w-135.0_e-122.0.nc")
+crs(bathy)
 
 #template raster to transform bathy data to match pacea grid
 ext2<-st_bbox(grid26)
@@ -50,11 +52,11 @@ bathy_proj
 #do they match?
 
 #unprojected bathymetry data
-#grid26 %>% 
-#  st_transform(., crs=4326) %>% #project on fly so they match for plotting
-#  ggplot(.) + 
-#  geom_spatraster(data=bathy)+
-#  geom_sf()
+grid26 %>% 
+  st_transform(., crs=4326) %>% #project on fly so they match for plotting
+  ggplot(.) + 
+  geom_spatraster(data=bathy)+
+  geom_sf()
 
 #projected bathymetry data
 grid26 %>% 
